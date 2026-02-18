@@ -21,7 +21,7 @@ function Banner() {
                     A thief who steals corporate secrets through dream-sharing technology.
                 </p>
 
-                <div className="flex gap-3">
+                <div className="flex gap-6">
                     <button className="bg-yellow-400 text-black px-6 py-3 rounded font-semibold hover:bg-yellow-500 transition">
                         ▶ Watch Now
                     </button>
