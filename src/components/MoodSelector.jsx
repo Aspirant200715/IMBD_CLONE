@@ -18,7 +18,7 @@ function MoodSelector() {
     };
 
     return (
-        <div className="min-h-screen bg-zinc-950 text-white p-8">
+        <div className="min-h-screen bg-slate-950 text-white p-8">
             <h1 className="text-4xl font-bold text-center mb-8 text-yellow-400">
                 How are you feeling today?
             </h1>
@@ -32,7 +32,7 @@ function MoodSelector() {
               flex flex-col items-center justify-center p-6 rounded-xl transition-all duration-300 transform hover:scale-105
               ${selectedMood === mood.id
                                 ? `${mood.color} text-white shadow-lg scale-105 ring-4 ring-white/20`
-                                : "bg-zinc-900 hover:bg-zinc-800 text-zinc-300"
+                                : "bg-slate-800 hover:bg-slate-700 text-slate-300"
                             }
             `}
                     >

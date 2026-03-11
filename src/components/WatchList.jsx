@@ -1,68 +1,67 @@
-import { useState } from "react";
+import React from "react";
 
-function Watchlist() {
-  const [watchlist, setWatchlist] = useState([
-    {
-      id: 1,
-      title: "Inception",
-      year: "2010",
-    },
-    {
-      id: 2,
-      title: "Interstellar",
-      year: "2014",
-    },
-    {
-      id: 3,
-      title: "The Dark Knight",
-      year: "2008",
-    },
-    {
-      id: 4,
-      title: "The Shawshank Redemption",
-      year: "1994",
-    },
-    {
-      id: 5,
-      title: "Pulp Fiction",
-      year: "1994",
-    },
-    {
-      id: 6,
-      title: "The Matrix",
-      year: "1999",
-    }
-    // Add more movies as needed
-  ]);
-
-  const removeMovie = (id) => {
-    setWatchlist(watchlist.filter((movie) => movie.id !== id));
-  };
-
+function Watchlist({ watchlist, setWatchlist, handleRemoveFromWatchlist }) {
   return (
-    <div className="min-h-screen bg-zinc-950 text-white p-6">
-      <h1 className="text-3xl font-bold mb-6">My Watchlist</h1>
+    <div className="min-h-screen bg-slate-950 text-white p-8">
+      <h1 className="text-3xl font-bold mb-8 border-b border-slate-800 pb-4">
+        My Watchlist
+      </h1>
 
       {watchlist.length === 0 ? (
-        <p className="text-zinc-400">Your watchlist is empty.</p>
+        <p className="text-slate-400 text-center text-lg">
+          Your watchlist is empty.
+        </p>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {watchlist.map((movie) => (
-            <div
-              key={movie.id}
-              className="bg-zinc-900 p-4 rounded-lg shadow-md"
-            >
-              <h2 className="text-xl font-semibold">{movie.title}</h2>
-              <p className="text-zinc-400">{movie.year}</p>
+        <div className="overflow-x-auto rounded-lg shadow-lg">
+          <table className="w-full text-left border-collapse">
+            <thead>
+              <tr className="bg-slate-800 text-slate-300 uppercase text-sm tracking-wider">
+                <th className="p-4">Poster</th>
+                <th className="p-4">Name</th>
+                <th className="p-4">Rating</th>
+                <th className="p-4">Popularity</th>
+                <th className="p-4">Genre</th>
+                <th className="p-4 text-red-500">Action</th>
+              </tr>
+            </thead>
 
-              <button
-                onClick={() => removeMovie(movie.id)}
-                className="mt-4 bg-red-500 px-3 py-1 rounded hover:bg-red-600 transition"
-              >
-                Remove
-              </button>
-            </div>
-          ))}
+            <tbody className="divide-y divide-slate-800">
+              {watchlist.map((movie) => (
+                <tr key={movie.id} className="hover:bg-slate-900 transition">
+                  <td className="p-4">
+                    <img
+                      src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                      alt={movie.title}
+                      className="w-16 h-24 object-cover rounded shadow"
+                    />
+                  </td>
+
+                  <td className="p-4 font-semibold">{movie.title}</td>
+
+                  <td className="p-4 text-yellow-400">
+                    ⭐ {movie.vote_average}
+                  </td>
+
+                  <td className="p-4">{movie.popularity}</td>
+
+                  <td className="p-4">
+                    <span className="bg-slate-800 px-3 py-1 rounded-full text-xs border border-slate-700">
+                      {movie.genre}
+                    </span>
+                  </td>
+
+                  <td className="p-4">
+                    <button
+                      onClick={() => handleRemoveFromWatchlist(movie)}
+                      className="text-red-500 hover:text-red-400 transition font-medium"
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       )}
     </div>

@@ -9,7 +9,7 @@ function Banner() {
             }}
         >
             {/* Gradient Overlay */}
-            <div className="absolute inset-0 bg-linear-to-r from-black/80 via-black/50 to-transparent"></div>
+            <div className="absolute inset-0 bg-linear-to-r from-slate-900/90 via-slate-900/60 to-transparent"></div>
 
             {/* Content */}
             <div className="relative z-10 px-16 max-w-2xl">
@@ -17,7 +17,7 @@ function Banner() {
                     Inception
                 </h1>
 
-                <p className="text-zinc-200 text-lg mb-8 leading-relaxed">
+                <p className="text-slate-200 text-lg mb-8 leading-relaxed">
                     A thief who steals corporate secrets through dream-sharing technology.
                 </p>
 

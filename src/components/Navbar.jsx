@@ -2,17 +2,16 @@ import { useState,react } from "react";
 import image from "../assets/image.png";
 import {Link} from "react-router-dom";
 
-
 function Navbar() {
   const [selected, setSelected] = useState("Movies");
 
   return (
-    <nav className="bg-zinc-900 text-white px-6 py-3 flex justify-between items-center">
+    <nav className="bg-slate-900 text-white px-6 py-3 flex justify-between items-center">
 
       <div className="flex items-center gap-8">
       <img src={image} alt="logo" className="w-10 h-10 object-contain" />
         <div className="text-2xl font-bold text-yellow-400">
-          MovieMania
+          MovieZone
         </div>
 {/* Click → URL changes → Only Page Component Changes */}
 {/* When clicked:
@@ -33,7 +32,7 @@ Navbar + app state remain intact */}
         <select
           value={selected}
           onChange={(e) => setSelected(e.target.value)}
-          className="bg-zinc-800 border border-zinc-700 px-2 py-1 rounded text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400">
+          className="bg-slate-800 border border-slate-700 px-2 py-1 rounded text-sm focus:outline-none focus:ring-2 focus:ring-yellow-400">
           <option>Movies</option>
           <option>Series</option>
           <option>Episodes</option>
