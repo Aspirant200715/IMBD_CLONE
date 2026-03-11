@@ -11,12 +11,17 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
   const [watchlist, setWatchlist] = useState([]);
 
+
+  //adding a new movie to the watchlist 
   const handleAddtoWatchlist = (movieObj) => {
-    let newWatchList = [...watchlist, movieObj];
+    let newWatchList = [...watchlist, movieObj];  //add a new movie in the already avaialable list
     localStorage.setItem("watchlist", JSON.stringify(newWatchList));
     setWatchlist(newWatchList);
   };
 
+
+
+  //removing the movie from the watchlist
   const handleRemoveFromWatchlist = (movieObj) => {
     let filteredWatchList = watchlist.filter((movie) => {
       return movie.id != movieObj.id;
@@ -25,13 +30,17 @@ function App() {
     localStorage.setItem("watchlist", JSON.stringify(filteredWatchList));
   };
 
+
+
+  //updating the local storage 
   useEffect(() => {
-    let moviesFromLocalStorage = localStorage.getItem("watchlist");
-    if (!moviesFromLocalStorage) {
+    let moviesFromLS = localStorage.getItem("watchlist");
+    if (!moviesFromLS) {
       return;
     }
-    setWatchlist(JSON.parse(moviesFromLocalStorage));
+    setWatchlist(JSON.parse(moviesFromLS));
   }, []);
+
 
   return (
     <>

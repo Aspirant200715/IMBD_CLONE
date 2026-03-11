@@ -5,7 +5,8 @@ function WatchListButton({
   watchlist,
   handleAddtoWatchlist,
   handleRemoveFromWatchlist,
-}) {
+})
+ {
   function isContain(movieObj) {
     for (let i = 0; i < watchlist.length; i++) {
       if (watchlist[i].id === movieObj.id) {

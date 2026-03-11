@@ -37,9 +37,6 @@ Navbar + app state remain intact */}
           <option>Series</option>
           <option>Episodes</option>
         </select>
-        <button className="hidden sm:block hover:text-yellow-400 font-medium">
-          Watchlist
-        </button>
         <button className="bg-yellow-400 text-black px-4 py-1.5 rounded font-semibold hover:bg-yellow-500 transition">
           Sign In
         </button>

@@ -1,4 +1,5 @@
 import React from "react";
+import { genreMap } from "./genre";
 
 function Watchlist({ watchlist, setWatchlist, handleRemoveFromWatchlist }) {
   return (
@@ -45,8 +46,8 @@ function Watchlist({ watchlist, setWatchlist, handleRemoveFromWatchlist }) {
                   <td className="p-4">{movie.popularity}</td>
 
                   <td className="p-4">
-                    <span className="bg-slate-800 px-3 py-1 rounded-full text-xs border border-slate-700">
-                      {movie.genre}
+                    <span className="bg-slate-800 px-3 py-1 rounded-full text-xs border border-slate-700 border-2 text-slate-300">
+                      {genreMap[movie.genre_ids[0]]}    
                     </span>
                   </td>
 

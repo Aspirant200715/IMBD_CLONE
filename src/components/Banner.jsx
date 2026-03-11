@@ -9,7 +9,7 @@ function Banner() {
             }}
         >
             {/* Gradient Overlay */}
-            <div className="absolute inset-0 bg-linear-to-r from-slate-900/90 via-slate-900/60 to-transparent"></div>
+            <div className="absolute inset-0 bg-linear-to-r from-slate-980/90 via-slate-900/60 to-transparent"></div>
 
             {/* Content */}
             <div className="relative z-10 px-16 max-w-2xl">
@@ -22,11 +22,11 @@ function Banner() {
                 </p>
 
                 <div className="flex gap-6">
-                    <button className="bg-yellow-400 text-black px-6 py-3 rounded font-semibold hover:bg-yellow-500 transition">
+                    <button className="bg-yellow-400 text-black px-6 py-3 rounded font-semibold hover:bg-yellow-500 transition border-2 border-radius-full">
                         ▶ Watch Now
                     </button>
 
-                    <button className="bg-white/20 backdrop-blur-sm px-6 py-3 rounded hover:bg-white/30 transition">
+                    <button className="bg-white/20 backdrop-blur-sm px-6 py-3 rounded hover:bg-white/40 transition border-2">
                         + Watchlist
                     </button>
                 </div>
