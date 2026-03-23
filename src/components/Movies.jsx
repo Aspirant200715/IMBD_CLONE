@@ -13,8 +13,10 @@ function Movies({
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+
   const API_KEY = import.meta.env.VITE_TMDB_KEY;
   console.log(import.meta.env.VITE_TMDB_KEY);
+
 
   // we also use axios
   // useEffect(()=>{
@@ -26,12 +28,11 @@ function Movies({
     const fetchTrending = async () => {
       try {
         setLoading(true);
-        const response = await fetch(
-          `https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}&page=${page}`,
-        );
-        console.log(
-          `https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}`,
-        );
+
+        const url = `https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}&page=${page}`;
+
+        const response = await fetch(url);
+        console.log(url);
         if (!response.ok) {
           throw new Error("API error");
         }

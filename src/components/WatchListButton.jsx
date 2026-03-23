@@ -1,12 +1,18 @@
 import React from "react";
+import { useContext } from "react";
+import { MovieContext } from "./MovieContext";    
 
 function WatchListButton({
   movie,
-  watchlist,
-  handleAddtoWatchlist,
-  handleRemoveFromWatchlist,
+  watchlist
 })
+
  {
+   //context api used to handle the 
+   const {handleAddtoWatchlist,handleRemoveFromWatchlist} = useContext(MovieContext)
+   //use context is used here 
+
+
   function isContain(movieObj) {
     for (let i = 0; i < watchlist.length; i++) {
       if (watchlist[i].id === movieObj.id) {
@@ -16,8 +22,8 @@ function WatchListButton({
     return false;
   }
 
-  const isAdded = isContain(movie);
 
+  const isAdded = isContain(movie);
   const handleWatchlist = (e) => {
     e.stopPropagation();
     if (isAdded) {
@@ -26,6 +32,7 @@ function WatchListButton({
       handleAddtoWatchlist(movie);
     }
   };
+
 
   return (
     <div
@@ -36,5 +43,6 @@ function WatchListButton({
     </div>
   );
 }
+
 
 export default WatchListButton;

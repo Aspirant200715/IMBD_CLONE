@@ -1,12 +1,18 @@
 import React from "react";
 import WatchListButton from "./WatchListButton";
+import { useContext } from "react";
+import { MovieContext } from "./MovieContext";
 
 function MovieCard({
   movie,
   watchlist,
-  handleAddtoWatchlist,
   handleRemoveFromWatchlist,
-}) {
+  filteredMovies,
+}) 
+
+{
+  const {handleAddtoWatchlist} = useContext(MovieContext)
+  
   return (
     <div className="w-[200px] relative bg-slate-800 rounded-lg overflow-hidden hover:scale-105 duration-300 ease-in-out cursor-pointer shadow-lg hover:shadow-yellow-400/30 hover:shadow-xl">
       <WatchListButton
@@ -28,7 +34,8 @@ function MovieCard({
           {movie.title}
         </h3>
       </div>
-    </div>
+</div>
+
   );
 }
 

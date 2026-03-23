@@ -1,12 +1,43 @@
-import React from "react";
+import { React, useState } from "react";
 import { genreMap } from "./genre";
 
 function Watchlist({ watchlist, setWatchlist, handleRemoveFromWatchlist }) {
+  const [selectedGenre, setSelectedGenre] = useState("All");
+
+  const genres = ["All"];
+  watchlist.forEach((movie) => {
+    const genre = genreMap[movie.genre_ids[0]];
+    if (!genres.includes(genre)) {
+      genres.push(genre);
+    }
+  });
+
+  const filteredMovies =
+    selectedGenre === "All"
+      ? watchlist
+      : watchlist.filter(
+          (movie) => genreMap[movie.genre_ids[0]] === selectedGenre,
+        );
+
   return (
     <div className="min-h-screen bg-slate-950 text-white p-8">
       <h1 className="text-3xl font-bold mb-8 border-b border-slate-800 pb-4">
         My Watchlist
       </h1>
+
+      <div className="mb-6 flex gap-4 items-center">
+        <label className="text-slate-300 font-medium">Filter by Genre:</label>
+
+        <select
+          value={selectedGenre}
+          onChange={(e) => setSelectedGenre(e.target.value)}
+          className="bg-slate-800 border border-slate-700 px-3 py-1 rounded text-sm"
+        >
+          {genres.map((genre) => (
+            <option key={genre}>{genre}</option>
+          ))}
+        </select>
+      </div>
 
       {watchlist.length === 0 ? (
         <p className="text-slate-400 text-center text-lg">
@@ -27,7 +58,7 @@ function Watchlist({ watchlist, setWatchlist, handleRemoveFromWatchlist }) {
             </thead>
 
             <tbody className="divide-y divide-slate-800">
-              {watchlist.map((movie) => (
+              {filteredMovies.map((movie) => (
                 <tr key={movie.id} className="hover:bg-slate-900 transition">
                   <td className="p-4">
                     <img
@@ -47,7 +78,7 @@ function Watchlist({ watchlist, setWatchlist, handleRemoveFromWatchlist }) {
 
                   <td className="p-4">
                     <span className="bg-slate-800 px-3 py-1 rounded-full text-xs border border-slate-700 border-2 text-slate-300">
-                      {genreMap[movie.genre_ids[0]]}    
+                      {genreMap[movie.genre_ids[0]]}
                     </span>
                   </td>
 
